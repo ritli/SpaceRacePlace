@@ -9,9 +9,15 @@ public class Destructible : MonoBehaviour
 
 	public DestructibleDestroy onDestroy;
 
-	MeshRenderer[] meshes;
+	[HideInInspector]
+	public MeshRenderer[] meshes;
 
 	Material heatMat;
+
+	public void SetMeshes(MeshRenderer[] newMeshes)
+	{
+		meshes = newMeshes;
+	}
 
 	public void Damage(float amount)
 	{
@@ -32,7 +38,6 @@ public class Destructible : MonoBehaviour
 
 	void Start()
     {
-		meshes = GetComponentsInChildren<MeshRenderer>();
 		heatMat = Resources.Load<Material>("HeatMat");
 
 		health = maxHealth;

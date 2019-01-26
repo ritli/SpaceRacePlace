@@ -55,6 +55,7 @@ MonoBehaviour:
   destructibleComponent: {fileID: 2269771317594486072}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
     type: 3}
+  canBlockWalls: 1
 --- !u!114 &2269771317594486072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 1
+  meshes: []
 --- !u!65 &4279766333850018653
 BoxCollider:
   m_ObjectHideFlags: 0

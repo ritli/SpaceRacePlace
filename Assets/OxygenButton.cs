@@ -4,8 +4,36 @@ using UnityEngine;
 
 public class OxygenButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+	Destructible destructibleComponent;
+
+	public GameObject buyaAirParticles;
+
+	private void OnEnable()
+	{
+		if (destructibleComponent)
+		{
+			destructibleComponent.onDestroy += BuyOxygen;
+		}
+		else
+		{
+			destructibleComponent = GetComponent<Destructible>();
+			destructibleComponent.SetMeshes(new MeshRenderer[] { });
+			destructibleComponent.onDestroy += BuyOxygen;
+		}
+	}
+
+	void BuyOxygen()
+	{
+		destructibleComponent.health = destructibleComponent.maxHealth;
+
+		if (Manager.UpdateCash(-10))
+		{
+			Manager.AddOxygen(10);
+			buyaAirParticles.GetComponent<ParticleSystem>().Play();
+		}
+	}
+
+	void Start()
     {
         
     }

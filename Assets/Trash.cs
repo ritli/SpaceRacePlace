@@ -15,6 +15,8 @@ public class Trash : MonoBehaviour
 	public GameObject destroyParticles;
 	private bool isDestroyed;
 
+	public bool canBlockWalls;
+
 	private void OnEnable()
 	{
 		if (destructibleComponent)
@@ -24,6 +26,7 @@ public class Trash : MonoBehaviour
 		else
 		{
 			destructibleComponent = GetComponent<Destructible>();
+			destructibleComponent.SetMeshes(GetComponentsInChildren<MeshRenderer>());
 			destructibleComponent.onDestroy += DestroyTrash;
 		}
 	}

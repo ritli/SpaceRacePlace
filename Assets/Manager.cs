@@ -21,7 +21,6 @@ public class Manager : MonoBehaviour
 		{
 			instance = this;
 
-
 			AddOxygen(100);
 			UpdateCash(0);
 		}
@@ -36,7 +35,7 @@ public class Manager : MonoBehaviour
 	{
 		if (instance.cash + amount > 0)
 		{
-			instance.cash -= amount;
+			instance.cash += amount;
 			instance.cashText.text = "Cash: " + instance.cash;
 
 			return true;
