@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PreviewHandler : MonoBehaviour
 {
+	private GameObject previewModelParent;
 	private MeshFilter[] previewModelFilters;
 	public static PreviewHandler instance;
 
+
+
 	void Start()
 	{
+		previewModelParent = new GameObject("PreviewParent");
+
 		previewModelFilters = new MeshFilter[10];
 
 		for (int i = 0; i < 10; i++)
 		{
 			var previewModel = new GameObject("Preview", typeof(MeshRenderer), typeof(MeshFilter)).GetComponent<MeshRenderer>();
+			previewModel.transform.parent = previewModelParent.transform;
 			previewModelFilters[i] = previewModel.GetComponent<MeshFilter>();
 			previewModel.transform.position = transform.position + Vector3.up * 200;
 			previewModel.material = Resources.Load<Material>("PreviewMat");
@@ -38,6 +44,11 @@ public class PreviewHandler : MonoBehaviour
 
 	private void PreviewObjectInternal(GameObject preview)
 	{
+		previewModelParent.transform.position = preview.transform.position;
+		previewModelParent.transform.rotation = preview.transform.rotation;
+
+		previewModelParent.transform.localScale = preview.transform.localScale + Vector3.one * 0.05f * ((Mathf.Sin(Time.time * 2) + 1));
+
 		for (int i = 0; i < 10; i++)
 		{
 			if (preview.transform.childCount > i && preview.transform.GetChild(i).GetComponent<MeshFilter>())
@@ -45,9 +56,8 @@ public class PreviewHandler : MonoBehaviour
 				var target = (preview.transform.GetChild(i));
 
 				previewModelFilters[i].mesh = target.GetComponent<MeshFilter>().mesh;
-				previewModelFilters[i].transform.position = target.transform.position;
-				previewModelFilters[i].transform.localScale = target.transform.localScale + Vector3.one * 0.05f * ((Mathf.Sin(Time.time * 2) + 1));
-				previewModelFilters[i].transform.localRotation = target.transform.rotation;
+				previewModelFilters[i].transform.localPosition = target.transform.localPosition;
+				previewModelFilters[i].transform.localRotation = target.transform.localRotation;
 
 				previewModelFilters[i].gameObject.SetActive(true);
 			}

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 	public float speed = 1;
 	public float jumpForce = 1;
 	private Weapon weapon;
+	private Vector3 weaponPos;
 	private Collider capsuleCollider;
 	new Camera camera;
 	new Rigidbody rigidbody;
@@ -18,10 +19,20 @@ public class Player : MonoBehaviour
 
 	MeshRenderer previewModel;
 	private MeshFilter previewModelFilter;
+	private float simGravMultiplier;
+	public float simGravForce;
+
+	bool isOnGround;
+	private bool chargingWeapon;
+	private float chargeTime;
+	private float chargeTimeMax = 0.75f;
+	private Vector2 shakeVector;
 
 	void Start()
     {
+
 		weapon = GetComponentInChildren<Weapon>();
+		weaponPos = weapon.transform.localPosition;
 
 		capsuleCollider = GetComponent<Collider>();
 
@@ -37,85 +48,39 @@ public class Player : MonoBehaviour
     {
 		InputUpdate();
 		CarryUpdate();
-    }
-
-	void CarryUpdate()
-	{
-		if (carriedObject)
-		{
-			Vector3 origin = transform.position + camera.transform.forward * 4;
-
-			carriedObject.spring.connectedAnchor = origin;
-
-			//carriedObject.rigidbody.rotation = Quaternion.Lerp(carriedObject.rigidbody.rotation, Quaternion.identity, Time.deltaTime * 12f);
-		}
-	}
-
-	void PickUp(GameObject pickedUpObject)
-	{
-		const int dragMultilpier = 200;
-
-		if (carriedObject)
-		{
-			carriedObject.rigidbody.useGravity = true;
-			carriedObject.rigidbody.drag /= dragMultilpier;
-			carriedObject.StopGetCarried();
-
-			carriedObject = null;
-		}
-
-		else {
-			if (pickedUpObject && pickedUpObject.CompareTag("Carryable"))
-			{
-				carriedObject = pickedUpObject.GetComponent<Trash>();
-
-				carriedObject.GetCarried();
-
-				carriedObject.rigidbody.drag *= dragMultilpier;
-				carriedObject.rigidbody.useGravity = false;
-			}
-		}
-
-
-	}
-
-	void Fire()
-	{
-		var hitObject = hitScan(100);
-
-		if (hitObject.collider)
-		{
-			Destroy(hitObject.collider.gameObject);
-
-			weapon.FireParticles(hitObject.point);
-		}
-
-		else
-		{
-			weapon.FireParticles(camera.transform.forward * 100 + transform.position);
-		}
-
+		SimulateGravityUpdate();
 	}
 
 	void InputUpdate()
 	{
-		Vector2 mouse = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+		Vector2 mouse = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) + shakeVector;
 
+		shakeVector = Vector2.zero;
 		transform.Rotate(transform.up, mouse.x);
 		camera.transform.Rotate(camera.transform.right, -mouse.y, Space.World);
 
-		Vector3 movementInput = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+		Vector3 movementInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 		rigidbody.AddForce(movementInput.z * transform.forward * speed, ForceMode.Impulse);
 		rigidbody.AddForce(movementInput.x * transform.right * speed, ForceMode.Impulse);
 
+		//JUMP
 		if (Input.GetButtonDown("Jump"))
 		{
 			Jump();
 		}
 
-		if (Input.GetMouseButtonDown(0)){
-			Fire();
+		if (!carriedObject)
+		{
+			//FIRE
+			if (Input.GetMouseButton(0))
+			{
+				Fire();
+			}
+			if (Input.GetMouseButtonUp(0))
+			{
+				StopFire();
+			}
 		}
 
 		var interactable = hitScan(5).collider;
@@ -137,7 +102,7 @@ public class Player : MonoBehaviour
 				{
 					PickUp(null);
 				}
-				else if (Input.GetButtonDown("Fire2"))
+				else if (Input.GetButtonDown("Fire1"))
 				{
 					var thrownObject = carriedObject;
 					PickUp(null);
@@ -147,7 +112,122 @@ public class Player : MonoBehaviour
 
 			PreviewHandler.StopPreview();
 		}
+	}
 
+	void ShakeScreen(float amount)
+	{
+		shakeVector = Random.insideUnitCircle * amount;
+	}
+
+	void CarryUpdate()
+	{
+		if (carriedObject)
+		{
+			Vector3 origin = transform.position + camera.transform.forward * 4;
+
+			carriedObject.spring.connectedAnchor = origin;
+
+			//carriedObject.rigidbody.rotation = Quaternion.Lerp(carriedObject.rigidbody.rotation, Quaternion.identity, Time.deltaTime * 12f);
+			weapon.transform.localPosition = Vector3.Slerp(weapon.transform.localPosition, weaponPos - weapon.transform.up * 2f, Time.deltaTime * 10f);
+		}
+		else
+		{
+			weapon.transform.localPosition = Vector3.Slerp(weapon.transform.localPosition, weaponPos, Time.deltaTime * 10f);
+
+		}
+	}
+	void SimulateGravityUpdate()
+	{
+		if (OnGround)
+		{
+			if (!isOnGround)
+			{
+				OnLand();
+			}
+
+			isOnGround = true;
+		}
+		else
+		{
+			simGravMultiplier = Mathf.Clamp01(simGravMultiplier + Time.deltaTime);
+
+			isOnGround = false;
+		}
+
+		rigidbody.AddForce(Vector3.down * simGravMultiplier * simGravForce, ForceMode.Impulse);
+
+	}
+
+	void PickUp(GameObject pickedUpObject)
+	{
+		const int dragMultilpier = 200;
+
+		if (carriedObject)
+		{
+			carriedObject.rigidbody.useGravity = true;
+			carriedObject.rigidbody.drag /= dragMultilpier;
+			carriedObject.StopGetCarried();
+
+			carriedObject = null;
+		}
+
+		else
+		{
+			if (pickedUpObject && pickedUpObject.CompareTag("Carryable"))
+			{
+				carriedObject = pickedUpObject.GetComponent<Trash>();
+
+				carriedObject.GetCarried();
+
+				carriedObject.rigidbody.drag *= dragMultilpier;
+				carriedObject.rigidbody.useGravity = false;
+			}
+		}
+
+
+	}
+
+	void Fire()
+	{
+		float damage = chargeTime - chargeTimeMax;
+
+		if (!chargingWeapon)
+		{
+			weapon.StartChargeParticles();
+			chargingWeapon = true;
+		}
+
+		ShakeScreen(chargeTime * Mathf.SmoothStep(1, 2, Mathf.Clamp01(chargeTime - 1)));
+
+		if (chargeTime > chargeTimeMax)
+		{
+			var hitObject = hitScan(100);
+
+			if (hitObject.collider)
+			{
+				if (hitObject.collider.GetComponent<Destructible>())
+				{
+					var destructible = hitObject.collider.GetComponent<Destructible>();
+
+					destructible.Damage(damage);
+				}
+
+				weapon.FireParticles(camera.transform.forward * 100 + transform.position);
+			}
+		}
+
+		chargeTime += Time.deltaTime;
+	}
+
+	void StopFire()
+	{
+		if (chargingWeapon)
+		{
+			chargeTime = 0;
+
+			chargingWeapon = false;
+			weapon.StopChargeParticles();
+		}
 	}
 
 	void Jump()
@@ -158,16 +238,20 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	RaycastHit hitScan(float distance)
+	void OnLand()
 	{
-			RaycastHit hitObject;
-
-			Physics.Raycast(new Ray(transform.position, transform.forward), out hitObject, distance, layerMask);
-
-			return hitObject;
+		simGravMultiplier = 0;
 	}
 
-bool OnGround
+	RaycastHit hitScan(float distance)
+	{
+		RaycastHit hitObject;
+		Physics.Raycast(new Ray(transform.position, camera.transform.forward), out hitObject, distance, layerMask);
+
+		return hitObject;
+	}
+
+	bool OnGround
 	{
 		get
 		{
