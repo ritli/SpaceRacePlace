@@ -45,7 +45,7 @@ public class OxygenButton : MonoBehaviour
     void Update()
     {
 		time += Time.deltaTime;
-		if (time >= 20f)
+		if (time >= 30f)
 		{
 			oxygenValue += 1;
 			int newValue = 5 + oxygenValue;

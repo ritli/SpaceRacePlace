@@ -25,10 +25,9 @@ public class Manager : MonoBehaviour
 		else
 		{
 			instance = this;
-
 			player = FindObjectOfType<Player>();
 			loseText.enabled = false;
-			AddOxygen(60);
+			AddOxygen(80);
 			UpdateCash(0);
 		}
     }
