@@ -68,9 +68,20 @@ public class TrashSpawner : MonoBehaviour
         if (time < 0f)
 		{
 			SpawnTrash(2);
+			if (spawnRateModifier >= 0.7f)
+			{
+				spawnRateModifier = spawnRateModifier * 0.92f;
+			}
+			else if (spawnRateModifier < 0.7f && spawnRateModifier >= 0.5)
+			{
+				spawnRateModifier = spawnRateModifier * 0.95f;
+			}
+			else if (spawnRateModifier < 0.5f && spawnRateModifier >= 0.3)
+			{
+				spawnRateModifier = spawnRateModifier * 0.98f;
+			}
 
 			time = 5f * spawnRateModifier;
-			spawnRateModifier = spawnRateModifier * 0.95f;
 		}
 		else
 		{
