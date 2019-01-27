@@ -10,6 +10,7 @@ public class Manager : MonoBehaviour
 
 	public float playtime;
 	public int trashCount;
+	public GameObject loseCamera;
 
 	public TMPro.TextMeshProUGUI loseText;
 	public TMPro.TextMeshProUGUI cashText;
@@ -18,6 +19,7 @@ public class Manager : MonoBehaviour
 
 	void Start()
     {
+		loseCamera.SetActive(false);
 		if (FindObjectsOfType<Manager>().Length > 1)
 		{
 			Destroy(gameObject);
@@ -55,6 +57,7 @@ public class Manager : MonoBehaviour
 	void GameOver()
 	{
 		Destroy(player.gameObject);
+		loseCamera.SetActive(true);
 
 		loseText.gameObject.SetActive(true);
 		loseText.enabled = true;
