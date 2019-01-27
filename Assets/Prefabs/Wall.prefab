@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 9056708558489513359}
   - component: {fileID: 9056708558492904879}
   - component: {fileID: 9056708558491807599}
+  - component: {fileID: 7632772826437263174}
   m_Layer: 0
   m_Name: Frame01_Wall01
   m_TagString: Untagged
@@ -231,6 +232,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7632772826437263174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056708558489809327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1c71e0b4f9db14289327be53261478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mats:
+  - {fileID: 2100000, guid: a6bb205b270554a4aa4687fdeb4e2514, type: 2}
+  - {fileID: 2100000, guid: 77eb155e303b6794f87ed67949195552, type: 2}
 --- !u!1 &9101808469416739333
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,3 +329,4 @@ MonoBehaviour:
   health: 0
   maxHealth: 30
   meshes: []
+  transparent: 0
