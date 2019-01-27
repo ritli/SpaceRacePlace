@@ -8,6 +8,9 @@ public class Manager : MonoBehaviour
 
 	int cash;
 
+	public float playtime;
+	public int trashCount;
+
 	public TMPro.TextMeshProUGUI cashText;
 	public UnityEngine.UI.Slider slider;
 
@@ -46,9 +49,17 @@ public class Manager : MonoBehaviour
 		}
 	}
 
+	void GameOver()
+	{
+
+	}
+
     void Update()
     {
 		AddOxygen(-Time.deltaTime * 0.6f);
+
+		playtime += Time.deltaTime;
+
 		if (instance.slider.value <= 0)
 		{
 			// GG

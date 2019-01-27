@@ -6,17 +6,41 @@ ModelImporter:
     100000: //RootNode
     100002: pCube7
     100004: textureEditorIsolateSelectSet_pCube7
+    100006: Duck
+    100008: Glass_polySurface10_LAserGun_Done
+    100010: polySurface10_LAserGun_Done_Gun
+    100012: textureEditorIsolateSelectSet_polySurface10_LAserGun_Done_Gun
     400000: //RootNode
     400002: pCube7
     400004: textureEditorIsolateSelectSet_pCube7
+    400006: Duck
+    400008: Glass_polySurface10_LAserGun_Done
+    400010: polySurface10_LAserGun_Done_Gun
+    400012: textureEditorIsolateSelectSet_polySurface10_LAserGun_Done_Gun
     2100000: pCube7Mat
     2100002: textureEditorIsolateSelectSet_pCube7Mat
+    2100004: DuckMat
+    2100006: Glass_polySurface10_LAserGun_DoneMat
+    2100008: polySurface10_LAserGun_Done_GunMat
+    2100010: textureEditorIsolateSelectSet_polySurface10_LAserGun_Done_GunMat
     2300000: pCube7
     2300002: textureEditorIsolateSelectSet_pCube7
+    2300004: Duck
+    2300006: Glass_polySurface10_LAserGun_Done
+    2300008: polySurface10_LAserGun_Done_Gun
+    2300010: textureEditorIsolateSelectSet_polySurface10_LAserGun_Done_Gun
     3300000: pCube7
     3300002: textureEditorIsolateSelectSet_pCube7
+    3300004: Duck
+    3300006: Glass_polySurface10_LAserGun_Done
+    3300008: polySurface10_LAserGun_Done_Gun
+    3300010: textureEditorIsolateSelectSet_polySurface10_LAserGun_Done_Gun
     4300000: pCube7
     4300002: textureEditorIsolateSelectSet_pCube7
+    4300004: Duck
+    4300006: Glass_polySurface10_LAserGun_Done
+    4300008: polySurface10_LAserGun_Done_Gun
+    4300010: textureEditorIsolateSelectSet_polySurface10_LAserGun_Done_Gun
   externalObjects: {}
   materials:
     importMaterials: 1
