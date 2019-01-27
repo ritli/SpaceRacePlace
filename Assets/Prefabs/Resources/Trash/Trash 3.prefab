@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 1
+  maxHealth: 6
   meshes: []
 --- !u!114 &8933620348116460444
 MonoBehaviour:
@@ -66,7 +66,7 @@ MonoBehaviour:
   spring: {fileID: 0}
   value: 0
   valueMin: 1
-  valueMax: 15
+  valueMax: 10
   destructibleComponent: {fileID: 0}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
     type: 3}

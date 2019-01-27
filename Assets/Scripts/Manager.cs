@@ -48,6 +48,11 @@ public class Manager : MonoBehaviour
 
     void Update()
     {
-		AddOxygen(-Time.deltaTime * 0.6f);    
+		AddOxygen(-Time.deltaTime * 0.6f);
+		if (instance.slider.value <= 0)
+		{
+			// GG
+			// YOU DEADED
+		}
     }
 }

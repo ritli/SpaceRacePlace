@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5467774988435763613}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_Children:
   - {fileID: 8781716580732813872}
   m_Father: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   spring: {fileID: 0}
   value: 0
-  valueMin: 1
+  valueMin: 2
   valueMax: 5
   destructibleComponent: {fileID: 1617935064969040466}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 5
+  maxHealth: 4
   meshes: []
 --- !u!54 &1349786017154101910
 Rigidbody:
