@@ -97,6 +97,8 @@ public class Trash : MonoBehaviour
 
 		Manager.UpdateCash(value);
 
+		Manager.instance.trashCount++;
+
 		if (explosive)
 		{
 			Explode();
