@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100004, guid: 19a5838dee1199746860a0989836db9f, type: 3}
+  - {fileID: 2100000, guid: e5fe29ef6dae7a34b803ba8694b69ec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 1344130028031454571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 1344130028031947085}
   - {fileID: 1344130028031947087}
@@ -130,10 +130,11 @@ MonoBehaviour:
   spring: {fileID: 0}
   value: 0
   valueMin: 1
-  valueMax: 5
+  valueMax: 3
   destructibleComponent: {fileID: 8388359469144075934}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
     type: 3}
+  canBlockWalls: 0
 --- !u!114 &8388359469144075934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 5
+  maxHealth: 3
+  meshes: []
 --- !u!65 &1861619279264398987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -234,7 +236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19a5838dee1199746860a0989836db9f, type: 3}
+  - {fileID: 2100000, guid: e5fe29ef6dae7a34b803ba8694b69ec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -311,7 +313,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100002, guid: 19a5838dee1199746860a0989836db9f, type: 3}
+  - {fileID: 2100000, guid: e5fe29ef6dae7a34b803ba8694b69ec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

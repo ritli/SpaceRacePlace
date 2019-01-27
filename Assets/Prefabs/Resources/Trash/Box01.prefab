@@ -50,7 +50,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   spring: {fileID: 0}
   value: 0
-  valueMin: 5
+  valueMin: 10
   valueMax: 20
   destructibleComponent: {fileID: 2269771317594486072}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 1
+  maxHealth: 20
   meshes: []
 --- !u!65 &4279766333850018653
 BoxCollider:

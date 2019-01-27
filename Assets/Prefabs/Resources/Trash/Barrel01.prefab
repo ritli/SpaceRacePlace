@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100010, guid: b24bf3aafb7468b49aa56217a94ab355, type: 3}
+  - {fileID: 2100000, guid: e5fe29ef6dae7a34b803ba8694b69ec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -134,7 +134,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100006, guid: b24bf3aafb7468b49aa56217a94ab355, type: 3}
+  - {fileID: 2100000, guid: e5fe29ef6dae7a34b803ba8694b69ec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,7 +211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100008, guid: b24bf3aafb7468b49aa56217a94ab355, type: 3}
+  - {fileID: 2100000, guid: e5fe29ef6dae7a34b803ba8694b69ec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -313,8 +313,8 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   spring: {fileID: 0}
   value: 0
-  valueMin: 1
-  valueMax: 12
+  valueMin: 8
+  valueMax: 15
   destructibleComponent: {fileID: 0}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
     type: 3}
@@ -332,5 +332,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 2
+  maxHealth: 10
   meshes: []
