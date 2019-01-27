@@ -5,14 +5,16 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
 	public static Manager instance;
-
+	private Player player;
 	int cash;
 
 	public float playtime;
 	public int trashCount;
 
+	public TMPro.TextMeshProUGUI loseText;
 	public TMPro.TextMeshProUGUI cashText;
 	public UnityEngine.UI.Slider slider;
+	private bool gameover;
 
 	void Start()
     {
@@ -24,6 +26,8 @@ public class Manager : MonoBehaviour
 		{
 			instance = this;
 
+			player = FindObjectOfType<Player>();
+			loseText.enabled = false;
 			AddOxygen(60);
 			UpdateCash(0);
 		}
@@ -51,7 +55,14 @@ public class Manager : MonoBehaviour
 
 	void GameOver()
 	{
+		Destroy(player.gameObject);
 
+		loseText.gameObject.SetActive(true);
+		loseText.enabled = true;
+		print("Lose");
+
+		loseText.text = "You trashed " + trashCount + " trashes\nSurvived for " + Mathf.CeilToInt(playtime).ToString() + " seconds\npress F12 to reset";
+		gameover = true;
 	}
 
     void Update()
@@ -60,10 +71,14 @@ public class Manager : MonoBehaviour
 
 		playtime += Time.deltaTime;
 
-		if (instance.slider.value <= 0)
+		if (instance.slider.value <= 0 && !gameover)
 		{
-			// GG
-			// YOU DEADED
+			GameOver();
+		}
+
+		if (Input.GetKeyDown(KeyCode.F12))
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
 		}
     }
 }
