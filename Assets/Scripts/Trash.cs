@@ -17,6 +17,12 @@ public class Trash : MonoBehaviour
 
 	public bool canBlockWalls;
 
+	public bool explosive;
+	public float timeTillExplode = 10;
+	public float explodeRadius = 7;
+
+	TMPro.TextMeshPro[] countdowns;
+
 	private void OnEnable()
 	{
 		if (destructibleComponent)
@@ -91,6 +97,11 @@ public class Trash : MonoBehaviour
 
 		Manager.UpdateCash(value);
 
+		if (explosive)
+		{
+			Explode();
+		}
+
 		Destroy(gameObject);
 	}
 
@@ -100,5 +111,45 @@ public class Trash : MonoBehaviour
 
 		value = Random.Range(valueMin, valueMax);
 		rigidbody = GetComponent<Rigidbody>();
+
+		if (explosive)
+		{
+			countdowns = GetComponentsInChildren<TMPro.TextMeshPro>();
+		}
     }
+
+	public void Explode()
+	{
+		var collision = Physics.OverlapSphere(transform.position, explodeRadius);
+
+		foreach (var item in collision)
+		{
+			if (item.GetComponent<Destructible>())
+			{
+				if (item.GetComponent<Trash>()){
+					item.GetComponent<Trash>().value = 0;
+				}
+				item.GetComponent<Destructible>().onDestroy();
+			}
+		}
+
+	}
+
+	private void Update()
+	{
+		if (explosive)
+		{
+			foreach (var item in countdowns)
+			{
+				item.text = Mathf.CeilToInt(timeTillExplode).ToString();
+			}
+
+			timeTillExplode -= Time.deltaTime;
+
+			if (timeTillExplode < -0.5f)
+			{
+				DestroyTrash();
+			}
+		}
+	}
 }

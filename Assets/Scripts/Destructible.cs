@@ -14,6 +14,8 @@ public class Destructible : MonoBehaviour
 
 	Material heatMat;
 
+	public bool transparent;
+
 	public void SetMeshes(MeshRenderer[] newMeshes)
 	{
 		meshes = newMeshes;
@@ -38,7 +40,7 @@ public class Destructible : MonoBehaviour
 
 	void Start()
     {
-		heatMat = Resources.Load<Material>("HeatMat");
+		heatMat = Resources.Load<Material>(transparent ? "HotMatTransparent" : "HotMat");
 
 		health = maxHealth;
 	}

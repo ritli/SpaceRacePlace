@@ -6,7 +6,7 @@ public class Wall : MonoBehaviour
 {
 	bool breached;
 
-	MeshRenderer destructibleMesh;
+	public MeshRenderer destructibleMesh;
 	Destructible destructibleComponent;
 	BoxCollider collider;
 	private GameObject stuckTrash;
@@ -34,7 +34,7 @@ public class Wall : MonoBehaviour
 		else
 		{
 			destructibleComponent = GetComponent<Destructible>();
-			destructibleComponent.SetMeshes(new MeshRenderer[] { GetComponent<MeshRenderer>() });
+			destructibleComponent.SetMeshes(new MeshRenderer[] {destructibleMesh});
 
 			destructibleComponent.onDestroy += DestroyWall;
 		}
@@ -59,7 +59,8 @@ public class Wall : MonoBehaviour
 		{
 			spawnedBreachParticles = Instantiate(breachParticles, transform.position + (rightSideOut ? -transform.right : transform.right) * 2, transform.localRotation * Quaternion.Euler(0, 90, 0));
 
-			Instantiate(explosion, transform.position, explosion.transform.rotation);
+			Instantiate(explosion, destructibleMesh.transform.position, explosion.transform.rotation);
+			destructibleMesh.enabled = false;
 
 			if (stuckTrash)
 			{
@@ -68,7 +69,6 @@ public class Wall : MonoBehaviour
 			}
 
 			destructibleComponent.SetMeshes(new MeshRenderer[] {});
-			GetComponent<MeshRenderer>().enabled = false;
 
 			collider.isTrigger = true;
 			breached = true;

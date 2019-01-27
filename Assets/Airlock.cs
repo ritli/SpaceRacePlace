@@ -29,7 +29,7 @@ public class Airlock : MonoBehaviour
 
 		foreach (var item in collidingObjects)
 		{
-			if (!item.GetComponent<Player>())
+			if (!item.GetComponent<Player>() && item.GetComponent<Rigidbody>())
 			{
 				item.GetComponent<Rigidbody>().useGravity = false;
 				affectedRigids.Add(item.GetComponent<Rigidbody>());
@@ -80,9 +80,12 @@ public class Airlock : MonoBehaviour
 		{
 			var dir = target.position - playerBody.position;
 
+			playerBody.useGravity = false;
+			playerBody.GetComponent<Player>().simGravForce = 0;
+
 			if (dir.magnitude > 6)
 			{
-				playerBody.AddForce(dir.normalized, ForceMode.Impulse);
+				playerBody.AddForce(dir.normalized * 10, ForceMode.Impulse);
 			}
 		}
     }
