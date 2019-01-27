@@ -7313,15 +7313,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209141627}
   m_LocalRotation: {x: -0, y: 0.7071067, z: -0, w: 0.70710695}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.004}
+  m_LocalScale: {x: 0.46814817, y: 0.48300043, z: 0.48300043}
   m_Children: []
   m_Father: {fileID: 1312112742}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.27, y: -0.408}
+  m_AnchoredPosition: {x: 0.401, y: -0.224}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209141629
@@ -39208,15 +39208,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 400000, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.51
+      value: -7.4907
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.64
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.03
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_LocalRotation.x
@@ -39256,15 +39256,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 4.6934
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 4.6934
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 4.6934
       objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: 974f24c67bd822040bb53f47753f7148, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -39393,7 +39393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 10
+  maxHealth: 5
   meshes: []
 --- !u!114 &1312112744
 MonoBehaviour:

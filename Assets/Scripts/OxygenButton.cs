@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class OxygenButton : MonoBehaviour
 {
 	Destructible destructibleComponent;
+	int oxygenValue;
+	float time;
+	TextMeshPro text;
 
 	public GameObject buyaAirParticles;
+
+	private void Start()
+	{
+		text = GetComponentInChildren<TextMeshPro>();
+	}
 
 	private void OnEnable()
 	{
@@ -26,21 +35,22 @@ public class OxygenButton : MonoBehaviour
 	{
 		destructibleComponent.health = destructibleComponent.maxHealth;
 
-		if (Manager.UpdateCash(-10))
+		if (Manager.UpdateCash(-(5 + oxygenValue)))
 		{
-			Manager.AddOxygen(10);
+			Manager.AddOxygen(5);
 			buyaAirParticles.GetComponent<ParticleSystem>().Play();
 		}
 	}
-
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+	
     void Update()
     {
-        
+		time += Time.deltaTime;
+		if (time >= 20f)
+		{
+			oxygenValue += 1;
+			int newValue = 5 + oxygenValue;
+			text.text = "Buy Air <b>¤" + newValue.ToString();
+			time = 0;
+		}
     }
 }

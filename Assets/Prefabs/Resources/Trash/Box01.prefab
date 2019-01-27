@@ -50,7 +50,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   spring: {fileID: 0}
   value: 0
-  valueMin: 1
+  valueMin: 5
   valueMax: 20
   destructibleComponent: {fileID: 2269771317594486072}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,

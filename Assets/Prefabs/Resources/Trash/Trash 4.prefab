@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8933620348116460444}
   - component: {fileID: 678125778210546514}
   - component: {fileID: 5004413938912091523}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trash 4
-  m_TagString: Untagged
+  m_TagString: Carryable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   spring: {fileID: 0}
   value: 0
   valueMin: 1
-  valueMax: 20
+  valueMax: 15
   destructibleComponent: {fileID: 0}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
     type: 3}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 8933620348116072730}
   - component: {fileID: 8933620348115269946}
   - component: {fileID: 8933620348114303994}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pizza01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

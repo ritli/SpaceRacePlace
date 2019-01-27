@@ -11,6 +11,7 @@ public class TrashSpawner : MonoBehaviour
 
 	int hatchIndex = 0;
 	private float time;
+	private float spawnRateModifier = 1;
 
 	void Start()
     {
@@ -68,7 +69,8 @@ public class TrashSpawner : MonoBehaviour
 		{
 			SpawnTrash(2);
 
-			time = 5f;
+			time = 5f * spawnRateModifier;
+			spawnRateModifier = spawnRateModifier * 0.97f;
 		}
 		else
 		{

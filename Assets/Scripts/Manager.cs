@@ -21,7 +21,7 @@ public class Manager : MonoBehaviour
 		{
 			instance = this;
 
-			AddOxygen(100);
+			AddOxygen(60);
 			UpdateCash(0);
 		}
     }

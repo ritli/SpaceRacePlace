@@ -51,7 +51,7 @@ MonoBehaviour:
   spring: {fileID: 0}
   value: 0
   valueMin: 1
-  valueMax: 10
+  valueMax: 5
   destructibleComponent: {fileID: 1617935064969040466}
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
     type: 3}
