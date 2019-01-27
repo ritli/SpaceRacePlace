@@ -30,14 +30,12 @@ public class Player : MonoBehaviour
 
 	void Start()
     {
-
 		weapon = GetComponentInChildren<Weapon>();
 		weaponPos = weapon.transform.localPosition;
 
 		capsuleCollider = GetComponent<Collider>();
 
 		camera = Camera.main;
-		print(camera.name);
 		rigidbody = GetComponent<Rigidbody>();
 
 		Cursor.lockState = CursorLockMode.Locked;
