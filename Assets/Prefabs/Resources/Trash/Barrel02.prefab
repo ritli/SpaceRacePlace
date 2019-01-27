@@ -585,6 +585,9 @@ MonoBehaviour:
   destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
     type: 3}
   canBlockWalls: 1
+  explosive: 1
+  timeTillExplode: 20
+  explodeRadius: 7
 --- !u!114 &1645186280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,6 +603,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 2
   meshes: []
+  transparent: 0
 --- !u!1 &5786371710751083830
 GameObject:
   m_ObjectHideFlags: 0

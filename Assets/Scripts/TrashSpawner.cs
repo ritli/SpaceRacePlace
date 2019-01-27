@@ -70,7 +70,7 @@ public class TrashSpawner : MonoBehaviour
 			SpawnTrash(2);
 
 			time = 5f * spawnRateModifier;
-			spawnRateModifier = spawnRateModifier * 0.97f;
+			spawnRateModifier = spawnRateModifier * 0.95f;
 		}
 		else
 		{
