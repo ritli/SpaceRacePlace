@@ -6,17 +6,23 @@ ModelImporter:
     100000: //RootNode
     100002: group14_pasted__pCube7
     100004: pasted__pCylinder5_group14
+    100006: Can03
     400000: //RootNode
     400002: group14_pasted__pCube7
     400004: pasted__pCylinder5_group14
+    400006: Can03
     2100000: group14_pasted__pCube7Mat
     2100002: pasted__pCylinder5_group14Mat
+    2100004: Can03Mat
     2300000: group14_pasted__pCube7
     2300002: pasted__pCylinder5_group14
+    2300004: Can03
     3300000: group14_pasted__pCube7
     3300002: pasted__pCylinder5_group14
+    3300004: Can03
     4300000: group14_pasted__pCube7
     4300002: pasted__pCylinder5_group14
+    4300004: Can03
   externalObjects: {}
   materials:
     importMaterials: 1

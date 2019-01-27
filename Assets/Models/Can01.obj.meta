@@ -6,17 +6,23 @@ ModelImporter:
     100000: //RootNode
     100002: pCube7
     100004: pCylinder5
+    100006: Can01
     400000: //RootNode
     400002: pCube7
     400004: pCylinder5
+    400006: Can01
     2100000: pCube7Mat
     2100002: pCylinder5Mat
+    2100004: Can01Mat
     2300000: pCube7
     2300002: pCylinder5
+    2300004: Can01
     3300000: pCube7
     3300002: pCylinder5
+    3300004: Can01
     4300000: pCube7
     4300002: pCylinder5
+    4300004: Can01
   externalObjects: {}
   materials:
     importMaterials: 1
