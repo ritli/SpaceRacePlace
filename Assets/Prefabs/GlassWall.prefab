@@ -92,7 +92,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 30
   meshes: []
-  transparent: 0
+  transparent: 1
 --- !u!1001 &432319796782361699
 PrefabInstance:
   m_ObjectHideFlags: 0

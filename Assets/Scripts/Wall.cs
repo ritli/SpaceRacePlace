@@ -51,13 +51,14 @@ public class Wall : MonoBehaviour
 	void Start()
     {
 		collider = GetComponent<BoxCollider>();
+		rightSideOut = !rightSideOut;
 	}
 
 	void DestroyWall()
 	{
 		if (!breached)
 		{
-			spawnedBreachParticles = Instantiate(breachParticles, transform.position + (rightSideOut ? -transform.right : transform.right) * 2, transform.localRotation * Quaternion.Euler(0, 90, 0));
+			spawnedBreachParticles = Instantiate(breachParticles, transform.position + (rightSideOut ? transform.right : -transform.right) * 2, transform.localRotation * Quaternion.Euler(0, -90, 0));
 
 			Instantiate(explosion, destructibleMesh.transform.position, explosion.transform.rotation);
 			destructibleMesh.enabled = false;

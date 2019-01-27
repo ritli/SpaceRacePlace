@@ -61,8 +61,8 @@ public class Player : MonoBehaviour
 
 		Vector3 movementInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-		rigidbody.AddForce(movementInput.z * transform.forward * speed, ForceMode.Impulse);
-		rigidbody.AddForce(movementInput.x * transform.right * speed, ForceMode.Impulse);
+		rigidbody.AddForce(movementInput.z * transform.forward * speed * Time.deltaTime, ForceMode.Impulse);
+		rigidbody.AddForce(movementInput.x * transform.right * speed* Time.deltaTime, ForceMode.Impulse);
 
 		//JUMP
 		if (Input.GetButtonDown("Jump"))

@@ -582,7 +582,7 @@ MonoBehaviour:
   valueMin: 0
   valueMax: 0
   destructibleComponent: {fileID: 0}
-  destroyParticles: {fileID: 3481564115698900294, guid: 810f63a517ade4e408706a58901d1b0d,
+  destroyParticles: {fileID: 1690710069677677339, guid: ef272aa534ff67d40abcbd7c180bc915,
     type: 3}
   canBlockWalls: 1
   explosive: 1
